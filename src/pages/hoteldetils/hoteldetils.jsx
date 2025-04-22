@@ -11,7 +11,7 @@ function Hoteldetils() {
    const [showModal, setShowModal] = useState(false);
   
      useEffect(()=>{
-      const timer = setTimeout(() => setLoading(false), 500);
+      const timer = setTimeout(() => setLoading(false), 200);
       return () => clearTimeout(timer);
      },[])
   return (
