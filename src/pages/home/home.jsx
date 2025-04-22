@@ -192,7 +192,7 @@ function Home() {
   
   
    useEffect(()=>{
-    const timer = setTimeout(() => setLoading(false), 200);
+    const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
    },[])
   return (
