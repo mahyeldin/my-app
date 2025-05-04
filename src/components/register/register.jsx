@@ -1,11 +1,34 @@
 import './register.css'
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 
 export default function NewAccountForm() {
+   const username = useRef(null)
+    const password = useRef(null)
+    const navigate = useNavigate();
+
+  function handelclick(){
+    const headers = {
+      'Accept': 'application/json'
+    };
+    const params = {
+      'username' : 'aa2005',
+      'password' :  'abdou26'
+    }
+    axios.post('https://tarmeezacademy.com/api/v1/login',params,{ headers })
+    .then((res)=>{
+       console.log(res)
+       setTimeout(()=>{
+         navigate('/home')
+       },1000)
+    })
+        
+}
 
   return (
     <div className="form-container">
@@ -19,10 +42,10 @@ export default function NewAccountForm() {
 
       <form className="form">
         <label>Email</label>
-        <input type="email" placeholder="Entre email" />
+        <input type="email" placeholder="Entre email" ref={username} />
 
         <label>Password</label>
-        <input type="password" placeholder="Entre password" />
+        <input type="password" placeholder="Entre password" ref={password} />
         <ul className="password-hints">
           <li>At least 8 characters</li>
           <li>Mix of letters and numbers</li>
@@ -50,7 +73,7 @@ export default function NewAccountForm() {
         <label>Phone number</label>
         <input type="text" placeholder="Phone number" />
 
-        <div  className="submit-btn" >Register</div>
+        <div  className="submit-btn"  onClick={handelclick}>Register</div>
 
         <div className="dividerregister" />
         <p className="connect-label">Or connect with:</p>

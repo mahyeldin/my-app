@@ -15,11 +15,14 @@ export default function Login() {
 
 
  function handelclick(){
+        const headers = {
+          'Accept': 'application/json'
+        };
         const params = {
           'username' : username.current.value,
           'password' : password.current.value
         }
-        axios.post('https://tarmeezacademy.com/api/v1/login',params)
+        axios.post('https://tarmeezacademy.com/api/v1/login',params,{ headers })
         .then((res)=>{
            console.log(res)
            setTimeout(()=>{
